@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ShopList</string>
+    <string name="titleText">Lista zakupów</string>
+    <string name="buttonStartText">Start</string>
+    <string name="buttonExitText">Wyjście</string>
+    <string name="buttonAddText">Dodaj</string>
+    <string name="ButtonCheckListText">Sprawdź listę</string>
 </resources>
