@@ -8,16 +8,16 @@ import android.widget.Button;
 
 public class AddToListActivity extends AppCompatActivity {
 
-    private Button testButton;
+    private Button mTestButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_to_list);
 
-        testButton = findViewById(R.id.buttonTest);
+        mTestButton = findViewById(R.id.buttonTest);
 
-        testButton.setOnClickListener(new View.OnClickListener() {
+        mTestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
