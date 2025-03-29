@@ -21,8 +21,15 @@ public class MainMenu extends AppCompatActivity {
 
         mButtonAddToList.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(v, AddToListActivity.class);
+            public void onClick(View view) {
+                startActivity(view, AddToListActivity.class);
+            }
+        });
+
+        mButtonCheckList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(view, CheckListActivity.class);
             }
         });
 
