@@ -13,6 +13,18 @@
         android:theme="@style/Theme.ShopList"
         tools:targetApi="31">
         <activity
+            android:name=".ViewListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".JoinListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateJoinListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateListActivity"
+            android:exported="false" />
+        <activity
             android:name=".CheckListActivity"
             android:exported="false"
             android:theme="@style/Theme.ShopList" />
@@ -27,6 +39,15 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="mojaapka.com"
+                    android:pathPrefix="/share"
+                    android:scheme="https" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

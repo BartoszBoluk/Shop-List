@@ -29,7 +29,7 @@ public class MainMenu extends AppCompatActivity {
         mButtonCheckList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(view, CheckListActivity.class);
+                startActivity(view, JoinListActivity.class);
             }
         });
 

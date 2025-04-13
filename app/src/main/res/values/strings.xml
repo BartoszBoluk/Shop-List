@@ -49,4 +49,6 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="buttonGetList">Pobierz listę</string>
+    <string name="buttonCreate">Stwórz Listę</string>
+    <string name="buttonOpen">Otwórz istniejącą listę</string>
 </resources>
