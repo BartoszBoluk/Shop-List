@@ -51,4 +51,6 @@
     <string name="buttonGetList">Pobierz listę</string>
     <string name="buttonCreate">Stwórz Listę</string>
     <string name="buttonOpen">Otwórz istniejącą listę</string>
+    <string name="buttonCopyID">Skopiuj ID listy</string>
+    <string name="TextViewAvaliableLists">Dostępne Listy</string>
 </resources>

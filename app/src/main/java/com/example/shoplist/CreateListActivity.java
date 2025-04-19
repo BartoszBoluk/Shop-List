@@ -3,6 +3,7 @@ package com.example.shoplist;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,7 +54,14 @@ public class CreateListActivity extends AppCompatActivity {
                 .addOnSuccessListener(documentReference -> {
                     String listId = documentReference.getId();
                     copyToClipboard(listId);
+                    saveListToFile(listName, listId);
+
+                    Intent intent = new Intent(CreateListActivity.this, ViewListActivity.class);
+                    intent.putExtra("LIST_ID", listId);
+                    startActivity(intent);
+
                     Toast.makeText(this, "Lista utworzona! ID skopiowano: " + listId, Toast.LENGTH_LONG).show();
+                    finish();
                 })
                 .addOnFailureListener(e ->
                         Toast.makeText(this, "Błąd tworzenia listy: " + e.getMessage(), Toast.LENGTH_SHORT).show());
@@ -61,5 +71,16 @@ public class CreateListActivity extends AppCompatActivity {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("listId", text);
         clipboard.setPrimaryClip(clip);
+    }
+
+    private void saveListToFile(String listName, String listId) {
+        String data = listName + "|" + listId + "\n";
+        try {
+            FileOutputStream fos = openFileOutput("joined_lists.txt", MODE_APPEND);
+            fos.write(data.getBytes());
+            fos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

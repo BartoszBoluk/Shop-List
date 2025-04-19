@@ -1,5 +1,8 @@
 package com.example.shoplist;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +29,7 @@ public class ViewListActivity extends AppCompatActivity {
     private ArrayList<DocumentSnapshot> items = new ArrayList<>();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference itemsRef;
+    private Button mButtonCopyID, mAddButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +39,34 @@ public class ViewListActivity extends AppCompatActivity {
         mTextViewList = findViewById(R.id.textViewListName);
         mEditTextItem = findViewById(R.id.editTextItemName);
         recyclerView = findViewById(R.id.recyclerViewItems);
-        Button addButton = findViewById(R.id.buttonAddItem);
+        mAddButton = findViewById(R.id.buttonAddItem);
+        mButtonCopyID = findViewById(R.id.buttonCopyID);
 
-        mListId = getIntent().getStringExtra("LIST_ID");
+        mListId = getIntent().getStringExtra("LIST_ID"); // Klucz zmieniony na "LIST_ID"
+        if (mListId == null || mListId.isEmpty()) {
+            Toast.makeText(this, "Brak ID listy", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         itemsRef = db.collection("lists").document(mListId).collection("items");
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         itemAdapter = new ItemAdapter(items, mListId);
         recyclerView.setAdapter(itemAdapter);
-        recyclerView.setAdapter(itemAdapter);
 
         loadListInfo();
         loadItems();
 
-        addButton.setOnClickListener(v -> addItem());
+        mAddButton.setOnClickListener(v -> addItem());
+
+        mButtonCopyID.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("List ID", mListId);
+            clipboard.setPrimaryClip(clip);
+
+            Toast.makeText(this, "ID listy skopiowane do schowka", Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void loadListInfo() {
@@ -91,5 +109,4 @@ public class ViewListActivity extends AppCompatActivity {
                     itemAdapter.notifyDataSetChanged();
                 });
     }
-
 }
