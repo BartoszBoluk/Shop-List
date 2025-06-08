@@ -4,68 +4,87 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ViewListActivity">
 
     <TextView
         android:id="@+id/textViewListName"
-        android:layout_width="329dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:text="Lista"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCopyID"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/buttonCopyID"
-        android:layout_width="171dp"
-        android:layout_height="48dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/buttonCopyID"
-        app:layout_constraintBottom_toTopOf="@+id/editTextItemName"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewListName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewListName" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <EditText
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSuggestions"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:padding="4dp"
+        app:layout_constraintTop_toBottomOf="@id/buttonCopyID"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <AutoCompleteTextView
         android:id="@+id/editTextItemName"
-        android:layout_width="339dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
         android:hint="Dodaj zakup..."
-        app:layout_constraintBottom_toTopOf="@+id/buttonAddItem"
+        android:inputType="text"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCopyID" />
+        app:layout_constraintTop_toBottomOf="@id/recyclerViewSuggestions" />
 
     <Button
         android:id="@+id/buttonAddItem"
-        android:layout_width="171dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Dodaj"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewItems"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/editTextItemName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextItemName" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp" />
+
+    <Button
+        android:id="@+id/buttonAddFromPicture"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Skanuj Zdjęcie"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/buttonAddItem"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewItems"
-        android:layout_width="313dp"
-        android:layout_height="434dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonAddItem" />
+        app:layout_constraintTop_toBottomOf="@id/buttonAddFromPicture" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

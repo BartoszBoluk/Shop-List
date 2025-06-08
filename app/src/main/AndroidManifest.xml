@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ShopList"
         tools:targetApi="31">
         <activity
+            android:name=".ViewStatisticsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ViewListActivity"
             android:exported="false" />
         <activity
@@ -37,8 +40,16 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
+            <!-- standardowe uruchomienie aplikacji -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- obsługa linków do aplikacji -->
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
@@ -48,8 +59,6 @@
                     android:host="mojaapka.com"
                     android:pathPrefix="/share"
                     android:scheme="https" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

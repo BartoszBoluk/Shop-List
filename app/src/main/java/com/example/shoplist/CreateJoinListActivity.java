@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class CreateJoinListActivity extends AppCompatActivity {
 
-    private Button mButtonCreateList, mButtonOpenList;
+    private Button mButtonCreateList, mButtonOpenList, mButtonViewStatistics;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -31,6 +31,7 @@ public class CreateJoinListActivity extends AppCompatActivity {
 
         mButtonCreateList = findViewById(R.id.buttonCreateList);
         mButtonOpenList = findViewById(R.id.buttonOpenList);
+        mButtonViewStatistics = findViewById(R.id.buttonViewStatistics);
 
         mButtonCreateList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +44,13 @@ public class CreateJoinListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(view, JoinListActivity.class);
+            }
+        });
+
+        mButtonViewStatistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(view, ViewStatisticsActivity.class);
             }
         });
     }
